@@ -1,14 +1,13 @@
 import Stripe from "stripe";
 import { NextRequest, NextResponse } from "next/server";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
 type CartItem = {
   product: { shortName: string; size: string; dimensions: string; price: number };
   quantity: number;
 };
 
 export async function POST(req: NextRequest) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
   try {
     const { items, shipping, customerEmail, promoCode, discountRate } = await req.json() as {
       items: CartItem[];

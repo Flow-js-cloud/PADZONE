@@ -1,9 +1,8 @@
 import Stripe from "stripe";
 import { NextRequest, NextResponse } from "next/server";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
 export async function GET(req: NextRequest) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
   const sessionId = req.nextUrl.searchParams.get("id");
   if (!sessionId) return NextResponse.json({ error: "Missing id" }, { status: 400 });
 
