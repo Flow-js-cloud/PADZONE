@@ -1,0 +1,232 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+
+  --cyan: #00e5ff;
+  --magenta: #ff0066;
+  --neon-green: #00ff99;
+  --gold: #ffd700;
+  --bg-void: #020209;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-void);
+  color: #e2e8f0;
+  font-family: var(--font-rajdhani);
+  overflow-x: clip;
+  cursor: default;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #07070f; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--cyan), var(--magenta));
+  border-radius: 3px;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(0, 229, 255, 0.25);
+  color: #fff;
+}
+
+/* ── Custom utilities ── */
+@layer utilities {
+  .neon-text-cyan {
+    text-shadow: 0 0 10px var(--cyan), 0 0 30px var(--cyan), 0 0 60px rgba(0,229,255,0.4);
+  }
+  .neon-text-magenta {
+    text-shadow: 0 0 10px var(--magenta), 0 0 30px var(--magenta), 0 0 60px rgba(255,0,102,0.4);
+  }
+  .neon-border-cyan {
+    border-color: var(--cyan);
+    box-shadow: 0 0 15px var(--cyan), inset 0 0 15px rgba(0,229,255,0.05);
+  }
+  .neon-border-magenta {
+    border-color: var(--magenta);
+    box-shadow: 0 0 15px var(--magenta), inset 0 0 15px rgba(255,0,102,0.05);
+  }
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, var(--cyan) 0%, #00a8ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-rgb {
+    background: linear-gradient(135deg, var(--cyan) 0%, var(--magenta) 50%, var(--neon-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .glass {
+    background: rgba(13, 13, 26, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .glass-light {
+    background: rgba(19, 19, 42, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+/* ── RGB animated border ── */
+.rgb-border {
+  position: relative;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+.rgb-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(90deg, #ff0066, #00e5ff, #00ff99, #bf00ff, #ff0066);
+  background-size: 300% 100%;
+  animation: rgb-gradient-move 3s linear infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+@keyframes rgb-gradient-move {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* ── Glitch text effect ── */
+.glitch-text {
+  position: relative;
+}
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+}
+.glitch-text::before {
+  animation: glitch-before 4s steps(1) infinite;
+  color: var(--cyan);
+  clip: rect(0, 900px, 0, 0);
+}
+.glitch-text::after {
+  animation: glitch-after 4s steps(1) infinite;
+  color: var(--magenta);
+  clip: rect(0, 900px, 0, 0);
+}
+@keyframes glitch-before {
+  0%, 94%, 100% { clip: rect(0, 900px, 0, 0); transform: none; }
+  95% { clip: rect(10px, 900px, 60px, 0); transform: translate(-2px); }
+  97% { clip: rect(40px, 900px, 80px, 0); transform: translate(2px); }
+  99% { clip: rect(20px, 900px, 40px, 0); transform: translate(-1px); }
+}
+@keyframes glitch-after {
+  0%, 93%, 100% { clip: rect(0, 900px, 0, 0); transform: none; }
+  94% { clip: rect(50px, 900px, 90px, 0); transform: translate(2px); }
+  96% { clip: rect(5px, 900px, 30px, 0); transform: translate(-2px); }
+  98% { clip: rect(70px, 900px, 100px, 0); transform: translate(1px); }
+}
+
+/* ── Scan lines overlay ── */
+.scanlines {
+  position: relative;
+}
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.05) 2px,
+    rgba(0, 0, 0, 0.05) 4px
+  );
+}
+
+/* ── Price badge ── */
+.price-badge {
+  background: linear-gradient(135deg, #ffd700, #ff9500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Cart item counter ── */
+.cart-count {
+  background: var(--magenta);
+  box-shadow: 0 0 10px var(--magenta);
+}
+
+/* ── Button styles ── */
+.btn-primary {
+  background: linear-gradient(135deg, var(--cyan), #0088aa);
+  color: #020209;
+  font-family: var(--font-orbitron);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+.btn-primary:hover {
+  box-shadow: 0 0 25px var(--cyan), 0 0 50px rgba(0,229,255,0.3);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  font-family: var(--font-orbitron);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+.btn-ghost:hover {
+  background: rgba(0,229,255,0.1);
+  box-shadow: 0 0 20px var(--cyan);
+}
+
+/* ── Noise texture overlay ── */
+.noise::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ── Star field background ── */
+.stars-bg {
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 30%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(2px 2px at 15% 50%, rgba(0,229,255,0.4) 0%, transparent 100%),
+    radial-gradient(2px 2px at 85% 70%, rgba(255,0,102,0.4) 0%, transparent 100%);
+}
