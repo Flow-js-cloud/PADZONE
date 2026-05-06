@@ -104,10 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="fr"
       className={`${orbitron.variable} ${rajdhani.variable} ${shareTechMono.variable}`}
     >
-      <head>
-        <link rel="preconnect" href="https://img.icons8.com" />
-        <link rel="dns-prefetch" href="https://img.icons8.com" />
-      </head>
+      <head />
       <body className="noise bg-void font-rajdhani antialiased">
         <script
           type="application/ld+json"

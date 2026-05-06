@@ -127,10 +127,12 @@ export function Footer() {
           <p className="text-xs font-mono text-white/30">
             Made with ⚡ for gamers
           </p>
-          <div className="flex items-center gap-4">
-            <img src="https://img.icons8.com/color/24/000000/visa.png" alt="Visa" width={24} height={16} className="h-5 w-auto opacity-40" />
-            <img src="https://img.icons8.com/color/24/000000/mastercard.png" alt="Mastercard" width={24} height={16} className="h-5 w-auto opacity-40" />
-            <span className="text-xs font-mono text-white/40">PayPal</span>
+          <div className="flex items-center gap-2">
+            {["Visa", "Mastercard", "PayPal"].map(m => (
+              <span key={m} className="text-[10px] font-mono px-2 py-0.5 rounded border border-white/10 text-white/30">
+                {m}
+              </span>
+            ))}
           </div>
         </div>
       </div>
