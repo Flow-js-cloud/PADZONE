@@ -77,7 +77,7 @@ export function IntroAnimation() {
         <div className="flex items-baseline gap-0">
           <div className="flex">
             {LETTERS_PAD.map((l, i) => (
-              <span key={i} className="intro-anim font-orbitron font-black text-7xl md:text-9xl"
+              <span key={i} className="intro-anim font-orbitron font-black text-5xl sm:text-7xl md:text-9xl"
                 style={{ color: "#00e5ff", textShadow: "0 0 30px #00e5ff, 0 0 60px rgba(0,229,255,0.4)",
                   animation: `intro-down 0.35s cubic-bezier(0.34,1.56,0.64,1) ${0.2 + i * 0.06}s both` }}>
                 {l}
@@ -86,7 +86,7 @@ export function IntroAnimation() {
           </div>
           <div className="flex">
             {LETTERS_ZONE.map((l, i) => (
-              <span key={i} className="intro-anim font-orbitron font-black text-7xl md:text-9xl"
+              <span key={i} className="intro-anim font-orbitron font-black text-5xl sm:text-7xl md:text-9xl"
                 style={{ color: "#ff0066", textShadow: "0 0 30px #ff0066, 0 0 60px rgba(255,0,102,0.4)",
                   animation: `intro-up 0.35s cubic-bezier(0.34,1.56,0.64,1) ${0.4 + i * 0.06}s both` }}>
                 {l}
