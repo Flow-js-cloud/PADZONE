@@ -2,13 +2,15 @@
 
 import { Shield, Truck, RotateCcw, Award, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { IntroAnimation } from "@/components/IntroAnimation";
+import dynamic from "next/dynamic";
 import { ProductCard } from "@/components/ProductCard";
 import ScrollExpandMedia from "@/components/ui/scroll-expansion-hero";
 import { getAllProducts } from "@/lib/customProducts";
 import { PRODUCTS } from "@/lib/products";
 import { useState, useEffect } from "react";
 import type { Product } from "@/lib/products";
+
+const IntroAnimation = dynamic(() => import("@/components/IntroAnimation").then(m => ({ default: m.IntroAnimation })), { ssr: false });
 
 const HERO_BG   = "/products/rgb-xl-setup.webp";
 const HERO_MEDIA = "/products/rgb-xl-closeup.webp";

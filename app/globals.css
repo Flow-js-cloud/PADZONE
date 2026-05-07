@@ -52,12 +52,13 @@ body {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-.animate-fade-up {
-  animation: fade-up 0.5s ease both;
+@keyframes bounce-y {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
 }
-.animate-fade-in {
-  animation: fade-in 0.4s ease both;
-}
+.animate-fade-up  { animation: fade-up  0.5s ease both; }
+.animate-fade-in  { animation: fade-in  0.4s ease both; }
+.animate-bounce-y { animation: bounce-y 1.5s ease-in-out infinite; }
 .delay-0   { animation-delay: 0ms; }
 .delay-100 { animation-delay: 100ms; }
 .delay-150 { animation-delay: 150ms; }
@@ -65,6 +66,8 @@ body {
 .delay-250 { animation-delay: 250ms; }
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-900 { animation-delay: 900ms; }
 
 /* ── Custom utilities ── */
 @layer utilities {

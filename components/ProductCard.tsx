@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { ShoppingCart, Star, Zap, Heart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
@@ -22,13 +21,12 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
     ? Math.round((1 - product.price / product.originalPrice) * 100)
     : null;
 
+  const delayMs = index * 60;
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.4, delay: index * 0.06 }}
-      className="group relative"
+    <div
+      className="group relative animate-fade-up"
+      style={{ animationDelay: `${delayMs}ms` }}
     >
       <div
         className={`relative rounded-xl overflow-hidden border border-border bg-surface transition-all duration-300 group-hover:border-cyan-DEFAULT/50 group-hover:-translate-y-1 ${
@@ -224,6 +222,6 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
           )}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
