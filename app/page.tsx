@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Shield, Truck, RotateCcw, Award, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { IntroAnimation } from "@/components/IntroAnimation";
@@ -64,12 +63,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-4 md:h-[460px]">
 
             {/* RGB — grande carte gauche */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="col-span-2 h-52 md:row-span-2 md:col-span-1 md:h-full"
-            >
+            <div className="col-span-2 h-52 md:row-span-2 md:col-span-1 md:h-full animate-fade-up">
               <Link href="/categories/rgb" className="group relative flex h-full rounded-2xl overflow-hidden border border-cyan-DEFAULT/20 hover:border-cyan-DEFAULT/60 transition-all duration-500">
                 <div className="absolute inset-0" style={{ background: "linear-gradient(160deg, #020209 0%, #001428 50%, #002a40 100%)" }} />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -91,10 +85,10 @@ export default function HomePage() {
                   </span>
                 </div>
               </Link>
-            </motion.div>
+            </div>
 
             {/* Anime */}
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="h-40 md:h-full">
+            <div className="h-40 md:h-full animate-fade-up delay-100">
               <Link href="/categories/anime" className="group relative flex h-full rounded-2xl overflow-hidden border border-magenta-DEFAULT/20 hover:border-magenta-DEFAULT/60 transition-all duration-500">
                 <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #0a0010 0%, #2a0030 60%, #4a0020 100%)" }} />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -111,10 +105,10 @@ export default function HomePage() {
                   </span>
                 </div>
               </Link>
-            </motion.div>
+            </div>
 
             {/* Jeux Vidéo */}
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }} className="h-40 md:h-full">
+            <div className="h-40 md:h-full animate-fade-up delay-150">
               <Link href="/categories/jeux" className="group relative flex h-full rounded-2xl overflow-hidden border border-neon-green/20 hover:border-neon-green/60 transition-all duration-500">
                 <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #001510 0%, #002820 60%, #004030 100%)" }} />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -131,10 +125,10 @@ export default function HomePage() {
                   </span>
                 </div>
               </Link>
-            </motion.div>
+            </div>
 
             {/* Bureautique */}
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="h-40 md:h-full">
+            <div className="h-40 md:h-full animate-fade-up delay-200">
               <Link href="/categories/bureautique" className="group relative flex h-full rounded-2xl overflow-hidden border border-white/10 hover:border-purple-400/40 transition-all duration-500">
                 <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #0e0e14 0%, #16101e 50%, #1a1228 100%)" }} />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -151,10 +145,10 @@ export default function HomePage() {
                   </span>
                 </div>
               </Link>
-            </motion.div>
+            </div>
 
             {/* Par Taille */}
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.25 }} className="h-40 md:h-full">
+            <div className="h-40 md:h-full animate-fade-up delay-250">
               <Link href="/categories/tailles" className="group relative flex h-full rounded-2xl overflow-hidden border border-gold/20 hover:border-gold/60 transition-all duration-500">
                 <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, #0a0800 0%, #1a1200 50%, #2a1e00 100%)" }} />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -172,7 +166,7 @@ export default function HomePage() {
                   </span>
                 </div>
               </Link>
-            </motion.div>
+            </div>
 
           </div>
         </section>
@@ -180,12 +174,12 @@ export default function HomePage() {
         {/* ── DERNIÈRES SORTIES ────────────────────────────────────────────── */}
         <section className="mb-24">
           <div className="flex items-end justify-between mb-10">
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <div className="animate-fade-up">
               <p className="font-mono text-xs tracking-[0.3em] uppercase text-magenta-DEFAULT mb-3">// Nouveautés</p>
               <h2 className="font-orbitron font-black text-4xl text-white">
                 Dernières <span className="text-gradient-rgb">Sorties</span>
               </h2>
-            </motion.div>
+            </div>
             <Link href="/categories/nouveautes" className="hidden sm:flex items-center gap-2 text-sm font-orbitron font-semibold text-white/40 hover:text-cyan-DEFAULT transition-colors">
               Tout voir <ChevronRight size={14} />
             </Link>
@@ -199,26 +193,23 @@ export default function HomePage() {
         <section className="mb-24">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {TRUST.map(({ icon: Icon, label, desc }, i) => (
-              <motion.div key={label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="flex flex-col items-center text-center p-4 sm:p-6 rounded-xl border border-border bg-surface"
+              <div key={label}
+                className={`flex flex-col items-center text-center p-4 sm:p-6 rounded-xl border border-border bg-surface animate-fade-up delay-${i * 100}`}
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ background: "rgba(0,229,255,0.08)", border: "1px solid rgba(0,229,255,0.2)" }}>
                   <Icon size={22} className="text-cyan-DEFAULT" />
                 </div>
                 <h3 className="font-orbitron font-bold text-xs text-white mb-1 tracking-wide">{label}</h3>
                 <p className="text-xs font-mono text-white/50">{desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </section>
 
         {/* ── NEWSLETTER ──────────────────────────────────────────────────── */}
         <section>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative overflow-hidden rounded-2xl p-6 sm:p-10 md:p-12 text-center border border-border"
+          <div
+            className="relative overflow-hidden rounded-2xl p-6 sm:p-10 md:p-12 text-center border border-border animate-fade-up"
             style={{ background: "linear-gradient(135deg, #0a0a14, #131326)" }}
           >
             <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #00e5ff, transparent)" }} />
@@ -238,7 +229,7 @@ export default function HomePage() {
               </button>
             </form>
             <p className="mt-4 text-xs font-mono text-white/40">Pas de spam. Désinscription en 1 clic.</p>
-          </motion.div>
+          </div>
         </section>
       </ScrollExpandMedia>
     </>

@@ -43,6 +43,29 @@ body {
   color: #fff;
 }
 
+/* ── Scroll reveal via IntersectionObserver-free CSS ── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-fade-up {
+  animation: fade-up 0.5s ease both;
+}
+.animate-fade-in {
+  animation: fade-in 0.4s ease both;
+}
+.delay-0   { animation-delay: 0ms; }
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-250 { animation-delay: 250ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
 /* ── Custom utilities ── */
 @layer utilities {
   .neon-text-cyan {
