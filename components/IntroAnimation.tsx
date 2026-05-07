@@ -83,14 +83,14 @@ export function IntroAnimation() {
       {/* ── Contenu centré (dans le flow flex du parent) ── */}
       <div className="relative z-10 flex flex-col items-center gap-6 w-full">
 
-        {/* Logo */}
-        <div className="flex items-baseline justify-center">
+        {/* Logo — taille fluide garantissant que 7 lettres Orbitron tiennent */}
+        <div className="flex items-baseline justify-center w-full overflow-hidden"
+          style={{ fontSize: "clamp(1.5rem, 10.5vw, 9rem)" }}>
           {[...LETTERS_PAD, ...LETTERS_ZONE].map((l, i) => {
             const isPad = i < 3;
             return (
               <span key={i} className="intro-anim font-orbitron font-black"
                 style={{
-                  fontSize: "clamp(2rem, 12vw, 9rem)",
                   color: isPad ? "#00e5ff" : "#ff0066",
                   textShadow: isPad
                     ? "0 0 30px #00e5ff, 0 0 60px rgba(0,229,255,0.4)"
@@ -112,7 +112,7 @@ export function IntroAnimation() {
         </div>
 
         {/* Tagline */}
-        <p className="intro-anim font-mono text-xs tracking-[0.25em] text-white/60 uppercase"
+        <p className="intro-anim font-mono text-xs tracking-widest text-white/60 uppercase w-full text-center"
           style={{ animation: "fade-in 0.4s ease 0.9s both" }}>
           Élève ton setup · Domine la partie
         </p>
