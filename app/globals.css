@@ -265,6 +265,18 @@ body {
   background-size: 200px 200px;
 }
 
+/* ── Intro animation keyframes ── */
+@keyframes intro-corner   { from { opacity:0; transform:scale(0) }         to { opacity:1; transform:scale(1) } }
+@keyframes intro-down     { from { opacity:0; transform:translateY(-80px) } to { opacity:1; transform:translateY(0) } }
+@keyframes intro-up       { from { opacity:0; transform:translateY( 80px) } to { opacity:1; transform:translateY(0) } }
+@keyframes intro-scan     { 0%{transform:translateY(0);opacity:0} 5%{opacity:1} 95%{opacity:1} 100%{transform:translateY(100vh);opacity:0} }
+@keyframes intro-width    { from{width:0} to{width:100%} }
+@keyframes intro-pop      { from{opacity:0;transform:scale(0.8)} to{opacity:1;transform:scale(1)} }
+@keyframes intro-particle { 0%{opacity:0;transform:scale(0) translateY(0)} 35%{opacity:1;transform:scale(1) translateY(-20px)} 100%{opacity:0;transform:scale(0) translateY(-60px)} }
+@keyframes intro-exit-kf  { to{opacity:0;transform:scale(1.05)} }
+.intro-anim { animation-fill-mode: both; }
+.intro-exit { animation: intro-exit-kf 0.9s cubic-bezier(0.4,0,0.2,1) forwards !important; }
+
 /* ── Star field background ── */
 .stars-bg {
   background-image:
