@@ -159,8 +159,9 @@ const ScrollExpandMedia = ({
               style={{ background: "linear-gradient(to bottom, rgba(0,229,255,0.6), transparent)" }} />
           </div>
         </section>
-        <div className='flex flex-col w-full px-4 py-10'>{children}</div>
       </div>
+      {/* Mobile children — outside height-constrained hero, no CLS */}
+      <div className='lg:hidden flex flex-col w-full px-4 py-10'>{children}</div>
 
       {/* ── Version DESKTOP : scroll-expansion — inline style opacity, no framer-motion ── */}
       <div ref={sectionRef} className='hidden lg:block transition-colors duration-700 ease-in-out overflow-x-hidden'
