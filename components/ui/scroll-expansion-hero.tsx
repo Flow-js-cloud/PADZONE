@@ -112,7 +112,7 @@ const ScrollExpandMedia = ({
   return (
     <>
       {/* ── Version MOBILE : hero plein écran — CSS only, zero JS animations ── */}
-      <div className='lg:hidden overflow-x-hidden'>
+      <div className='lg:hidden overflow-x-hidden' style={{ height: '88svh' }}>
         <section className='relative flex flex-col items-center justify-center overflow-hidden' style={{ height: '88svh' }}>
           <Image src={bgImageSrc} alt='Background' fill sizes='100vw'
             className='object-cover object-center scale-105' priority />
