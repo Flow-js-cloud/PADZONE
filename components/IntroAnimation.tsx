@@ -71,10 +71,10 @@ export function IntroAnimation() {
           animation: "intro-scan 2s linear 0.4s both" }} />
 
       {/* Center content */}
-      <div className="relative flex flex-col items-center gap-8 select-none">
+      <div className="relative flex flex-col items-center gap-8 select-none w-full px-6">
 
         {/* Logo letters */}
-        <div className="flex items-baseline gap-0">
+        <div className="flex items-baseline justify-center gap-0 w-full overflow-hidden">
           <div className="flex">
             {LETTERS_PAD.map((l, i) => (
               <span key={i} className="intro-anim font-orbitron font-black text-5xl sm:text-7xl md:text-9xl"
