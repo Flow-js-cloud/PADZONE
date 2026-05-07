@@ -162,8 +162,8 @@ const ScrollExpandMedia = ({
   return (
     <>
       {/* ── Version MOBILE : hero plein écran impactant ── */}
-      <div className='lg:hidden overflow-x-hidden' style={{ minHeight: '88svh' }}>
-        <section className='relative flex flex-col items-center justify-center min-h-[88vh] overflow-hidden'>
+      <div className='lg:hidden overflow-x-hidden' style={{ height: '88svh' }}>
+        <section className='relative flex flex-col items-center justify-center overflow-hidden' style={{ height: '88svh' }}>
           <Image
             src={bgImageSrc}
             alt='Background'
@@ -252,10 +252,10 @@ const ScrollExpandMedia = ({
       <div
         ref={sectionRef}
         className='hidden lg:block transition-colors duration-700 ease-in-out overflow-x-hidden'
-        style={{ minHeight: '100dvh' }}
+        style={{ height: '100dvh' }}
       >
-        <section className='relative flex flex-col items-center justify-start min-h-[100dvh]'>
-          <div className='relative w-full flex flex-col items-center min-h-[100dvh]'>
+        <section className='relative flex flex-col items-center justify-start' style={{ height: '100dvh' }}>
+          <div className='relative w-full flex flex-col items-center' style={{ height: '100dvh' }}>
             <motion.div
               className='absolute inset-0 z-0 h-full'
               initial={{ opacity: 0 }}
