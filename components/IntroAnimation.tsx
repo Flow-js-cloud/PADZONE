@@ -50,38 +50,38 @@ export function IntroAnimation() {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] bg-void overflow-hidden scanlines${exiting ? " intro-exit" : ""}`}
+      className={`fixed inset-0 z-[9999] bg-void overflow-hidden scanlines flex flex-col items-center justify-center gap-6 px-8 text-center select-none${exiting ? " intro-exit" : ""}`}
       style={{ cursor: "pointer" }}
       onClick={doExit}
     >
       {/* Grid bg */}
-      <div className="absolute inset-0 opacity-20"
+      <div className="absolute inset-0 opacity-20 pointer-events-none"
         style={{ backgroundImage: "linear-gradient(rgba(0,229,255,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,0.08) 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
 
       {/* Corner brackets */}
       {CORNERS.map(({ pos, style }, i) => (
-        <div key={i} className={`intro-anim absolute ${pos} w-12 h-12`}
+        <div key={i} className={`intro-anim absolute ${pos} w-12 h-12 pointer-events-none`}
           style={{ ...style, boxShadow: "0 0 10px #00e5ff", animation: `intro-corner 0.25s ease ${0.1 + i * 0.03}s both` }} />
       ))}
 
       {/* Scanline */}
-      <div className="intro-anim absolute top-0 left-0 right-0 h-px"
+      <div className="intro-anim absolute top-0 left-0 right-0 h-px pointer-events-none"
         style={{ background: "linear-gradient(90deg,transparent,#00e5ff,#ff0066,transparent)", animation: "intro-scan 2s linear 0.4s both" }} />
 
       {/* Particles */}
       {PARTICLES.map((p, i) => (
-        <div key={i} className="intro-anim absolute w-1 h-1 rounded-full"
+        <div key={i} className="intro-anim absolute w-1 h-1 rounded-full pointer-events-none"
           style={{ background: p.color, left: p.left, top: p.top, boxShadow: `0 0 6px ${p.color}`, animation: `intro-particle ${p.dur} ease ${p.delay} infinite` }} />
       ))}
 
       {/* Version */}
-      <div className="intro-anim absolute bottom-6 right-8 font-mono text-xs text-white/20"
+      <div className="intro-anim absolute bottom-6 right-8 font-mono text-xs text-white/20 pointer-events-none"
         style={{ animation: "fade-in 0.4s ease 2s both" }}>
         v2.0.25 // PADZONE.FR
       </div>
 
-      {/* ── Centre — tout dans un seul flex centré ── */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 px-8 text-center select-none">
+      {/* ── Contenu centré (dans le flow flex du parent) ── */}
+      <div className="relative z-10 flex flex-col items-center gap-6 w-full">
 
         {/* Logo */}
         <div className="flex items-baseline justify-center">
