@@ -269,7 +269,6 @@ const ScrollExpandMedia = ({
                 height={1080}
                 className='w-screen h-screen'
                 style={{ objectFit: 'cover', objectPosition: 'center' }}
-                priority
               />
               <div className='absolute inset-0 bg-black/10' />
             </motion.div>

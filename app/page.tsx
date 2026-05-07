@@ -11,8 +11,8 @@ import { PRODUCTS } from "@/lib/products";
 import { useState, useEffect } from "react";
 import type { Product } from "@/lib/products";
 
-const HERO_BG   = "/products/rgb-xl-setup.png";
-const HERO_MEDIA = "/products/rgb-xl-closeup.png";
+const HERO_BG   = "/products/rgb-xl-setup.webp";
+const HERO_MEDIA = "/products/rgb-xl-closeup.webp";
 
 const TRUST = [
   { icon: Shield, label: "Paiement sécurisé", desc: "SSL 256-bit" },
