@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
-import { CartDrawer } from "./CartDrawer";
-import { SearchOverlay } from "./SearchOverlay";
+
+const CartDrawer    = dynamic(() => import("./CartDrawer").then(m => ({ default: m.CartDrawer })), { ssr: false });
+const SearchOverlay = dynamic(() => import("./SearchOverlay").then(m => ({ default: m.SearchOverlay })), { ssr: false });
 
 export function SiteLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
